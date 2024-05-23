@@ -1,0 +1,25 @@
+<odoo>
+    <record id="view_crm_lead_form_inherit" model="ir.ui.view">
+        <field name="name">crm.lead.form.inherit</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="crm.crm_lead_view_form"/>
+        <field name="arch" type="xml">
+            <sheet position="inside">
+                <notebook>
+                    <page string="Sample Products">
+                        <field name="distribution_sample_product_ids">
+                            <tree editable="bottom">
+                                <field name="item_no"/>
+                                <field name="product_id"/>
+                                <field name="quantity"/>
+                            </tree>
+                        </field>
+                    </page>
+                </notebook>
+            </sheet>
+            <header position="inside">
+                <button string="Create Picking" type="object" name="action_create_picking" class="oe_highlight"/>
+            </header>
+        </field>
+    </record>
+</odoo>
