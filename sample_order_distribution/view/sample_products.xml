@@ -1,0 +1,29 @@
+<odoo>
+    <record id="view_distribute_sample_products_tree" model="ir.ui.view">
+        <field name="name">distribute.sample.products.tree</field>
+        <field name="model">distribute.sample.products</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="item_no"/>
+                <field name="product_id"/>
+                <field name="quantity"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_distribute_sample_products_form" model="ir.ui.view">
+        <field name="name">distribute.sample.products.form</field>
+        <field name="model">distribute.sample.products</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="item_no"/>
+                        <field name="product_id"/>
+                        <field name="quantity"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>
