@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Tree View for Distribution Sample Order -->
+    <record id="view_distribution_sample_order_tree" model="ir.ui.view">
+        <field name="name">distribution.sample.order.tree</field>
+        <field name="model">distribution.sample.order</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="partner_id"/>
+                <field name="warehouse_id"/>
+                <field name="source_location_id"/>
+                <field name="destination_location_id"/>
+                <field name="user_id"/>
+                <field name="auto_picking"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Form View for Distribution Sample Order -->
+    <record id="view_distribution_sample_order_form" model="ir.ui.view">
+        <field name="name">distribution.sample.order.form</field>
+        <field name="model">distribution.sample.order</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button string="Create Picking" type="object" name="action_create_picking" class="oe_highlight"/>
+                    <button string="View Picking" type="object" name="action_view_picking" class="oe_highlight"
+                            attrs="{'invisible': [('picking_ids', '=', False)]}"/>
+                    <button string="Auto Create Picking" type="action" name="action_auto_create_picking"
+                            class="oe_highlight"/>
+                </header>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="partner_id"/>
+                        <field name="warehouse_id"/>
+                        <field name="source_location_id"/>
+                        <field name="destination_location_id"/>
+                        <field name="user_id"/>
+                        <field name="auto_picking"/>
+                    </group>
+                    <notebook>
+                        <page string="Sample Products">
+                            <field name="distribution_sample_product_ids">
+                                <tree editable="bottom">
+                                    <field name="item_no"/>
+                                    <field name="product_id"/>
+                                    <field name="quantity"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action for Distribution Sample Order -->
+    <record id="action_distribution_sample_order" model="ir.actions.act_window">
+        <field name="name">Sample Orders</field>
+        <field name="res_model">distribution.sample.order</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Main Menu Item for Sample Order Distribution -->
+    <menuitem id="menu_sample_order_distribution"
+              name="Sample Order Distribution"
+              sequence="10"/>
+
+    <!-- Submenu Item for Sample Orders -->
+    <menuitem id="menu_distribution_sample_order"
+              name="Sample Orders"
+              parent="menu_sample_order_distribution"
+              action="action_distribution_sample_order"/>
+</odoo>

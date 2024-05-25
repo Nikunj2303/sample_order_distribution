@@ -1,0 +1,26 @@
+<odoo>
+    <record id="view_stock_location_sample_tree" model="ir.ui.view">
+        <field name="name">stock.location.sample.tree</field>
+        <field name="model">stock.location</field>
+        <field name="arch" type="xml">
+            <tree string="Sample Locations">
+                <field name="name"/>
+                <field name="user_id"/>
+                <field name="company_id"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_stock_location_sample" model="ir.actions.act_window">
+        <field name="name">Sample Locations</field>
+        <field name="res_model">stock.location</field>
+        <field name="view_mode">tree</field>
+        <field name="view_id" ref="view_stock_location_sample_tree"/>
+    </record>
+
+    <menuitem id="menu_stock_location_sample"
+              name="Sample Locations"
+              parent="stock.menu_stock_config"
+              action="action_stock_location_sample"
+              sequence="10"/>
+</odoo>
